@@ -11,7 +11,7 @@ import java.util.regex.*;
 public class IceCream {
 
 
-	    // Complete the icecreamParlor function below.
+	    // One test case failing
 	    static int[] icecreamParlor(int m, int[] cost) {
 	    	Map<Integer, List<Integer>> priceIndexMap = new HashMap<>();
 	    	for(int i = 0; i < cost.length; i++) {
@@ -38,6 +38,7 @@ public class IceCream {
 	    	return new int[] {index1 + 1, index2 + 1};
 	    }
 	    
+	 // All test case passed
 	    static int[] icecreamParlor2(int m, int[] cost) {
 	    	Map<Integer, Integer> map = new HashMap<>();
 	    	for(int i = 0; i < cost.length; i++) {
@@ -50,6 +51,18 @@ public class IceCream {
 	    		map.put(price1, i);
 	    	}
 			return new int[2];
+	    }
+	    
+	    // Brute Force Method
+	    static int[] icecreamParlor3(int m, int[] cost) {
+	    	for(int i = 0 ; i < cost.length - 1 ; i++){
+	            for(int j = i+1; j < cost.length ; j++){
+	                if(cost[i] + cost[j] == m){
+	                    return new int[]{i,j};
+	                }
+	            }
+	        }
+	        return new int[2];
 	    }
 	    private static final Scanner scanner = new Scanner(System.in);
 
