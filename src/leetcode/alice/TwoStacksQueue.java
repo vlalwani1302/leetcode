@@ -1,3 +1,5 @@
+package leetcode.alice;
+
 import java.io.*;
 import java.util.*;
 
