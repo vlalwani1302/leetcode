@@ -1,15 +1,19 @@
 package leetcode.alice;
 
+import java.util.Scanner;
+import java.util.Stack;
+
 public class BalancedBrackets {
 	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		while(true) {
+			String str = scanner.nextLine();
 		//isBalanced("{[()]}");
-			System.out.println(isBalanced(""
-					+ "{)[])}]){){]}[(({[)[{{[((]{()[]}][([(]}{](])()(}{(]}{})[)))[](){({)][}()((" 
-					)
-			);/*
+			System.out.println(isBalanced(str));/*
 			 * isBalanced("[](){()}"); isBalanced("()"); isBalanced("({}([][]))[]()");
 			 * isBalanced("{)[](}]}]}))}(())("); isBalanced("([[)");
 			 */
+		}
 	}
 
 	
@@ -17,7 +21,7 @@ public class BalancedBrackets {
 	 * 40 ( 41 ) 91 [ 93 ] 123 { 125 }
 	 */
 	static String isBalanced(String s) {
-		java.util.Stack stack = new java.util.Stack();
+		Stack<Character> stack = new Stack<>();
 		char[] charArray = s.toCharArray();
 		for (char c : charArray) {
 			switch (c) {
