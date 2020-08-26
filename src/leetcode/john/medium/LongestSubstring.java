@@ -10,8 +10,11 @@ public class LongestSubstring {
 	public static int lengthOfLongestSubstring1(String s) {
 		Set<String> charSet = new HashSet<>();
 		int n = s.length();
+        if(n == 0){
+            return 0;
+        }
 		int max = 1;
-		for(int i = 0; i < n-1; i++) {
+		for(int i = 0; i < n; i++) {
 			for(int j = i; j < n; j++) {
 				String temp = String.valueOf(s.charAt(j));
 				if(charSet.contains(temp)) {
