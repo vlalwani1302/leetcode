@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 
 public class ThreeSum {
 
-
-	    static List<List<Integer>> threeSum(int[] nums) {
+		// Brute Force
+	    static List<List<Integer>> threeSum2(int[] nums) {
 	    	Map<String,List<Integer>> resultMap = new HashMap<>();
 	    	int size = nums.length;
 	        for(int i = 0; i < size -2; i++){
@@ -39,7 +39,7 @@ public class ThreeSum {
 	    }
 	    
 	    // Complexity O(n2)
-	    static List<List<Integer>> threeSum2(int[] nums) {
+	    static List<List<Integer>> threeSum(int[] nums) {
 	    	Arrays.sort(nums);
 	    	List<List<Integer>> result = new ArrayList<List<Integer>>();
 	    	int target = 0;
@@ -79,7 +79,7 @@ public class ThreeSum {
 	    public static void main(String[] args) throws IOException {
 	            int[] arrItems = new int[] {-1,0,1,2,-1,-4};
 
-	            List<List<Integer>> result = threeSum2(arrItems);
+	            List<List<Integer>> result = threeSum(arrItems);
 	            System.out.println(result);
 
 	}
