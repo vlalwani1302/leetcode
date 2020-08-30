@@ -20,6 +20,7 @@ public class Merge2SortedLists {
 		System.out.println("list2:");
 		list2.show();
 		
+		System.out.println("Merged List:");
 		mergeLists(list1.head, list2.head);
 	}
 
