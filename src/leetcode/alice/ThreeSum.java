@@ -68,6 +68,7 @@ public class ThreeSum {
         Arrays.sort(nums);
         int a=0;
         for(int i=0; i< nums.length - 2; i++){
+        	if(i > 0 && nums[i] == nums[i-1]) continue;
         	a = nums[i];
         	int target = total - a;
         	int twoNums[] = twoSum(nums, target, i+1);
@@ -93,6 +94,13 @@ public class ThreeSum {
     		} else {
     			result[0] = i;
     			result[1] = j;
+    			while(i < j && nums[i] == nums[i+1]) // ignore element if same as previous on left
+					i++;
+				while(i < j && nums[j] == nums[j-1])
+					j--; // ignore element is same as previous on right
+
+				i++; // move left pointer to right since left no. should increase in sorted array
+				j--; 
     			return result;
     		}
     		
