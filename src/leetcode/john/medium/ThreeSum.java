@@ -44,6 +44,10 @@ public class ThreeSum {
 
 	            List<List<Integer>> result = threeSum(arrItems);
 	            System.out.println(result);
+	            
+	            List<List<Integer>> result1 = threeSum(new int[] {-1,0,1,0});
+
+	            System.out.println(result1);
 
 	}
 
