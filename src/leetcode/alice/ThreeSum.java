@@ -64,23 +64,44 @@ public class ThreeSum {
     public static List<List<Integer>> threeSum1(int[] nums) {
         int total = 0;
         List<List<Integer>> result = new ArrayList<List<Integer>>();
-        List<Integer> list = new ArrayList<Integer>();
         Arrays.sort(nums);
+       // int[] arrItems = new int[] {-4, -1, -1, 0, 1, 2};
+
         int a=0;
         for(int i=0; i< nums.length - 2; i++){
         	if(i > 0 && nums[i] == nums[i-1]) continue; // ignore element if already same as previous element(duplicates), and array is sorted so equal elements are adjacent
         	a = nums[i];
         	int target = total - a;
-        	int twoNums[] = twoSum(nums, target, i+1);
-        	if(twoNums[0] > 0 && twoNums[1] > 0) {
-        		list.add(a);
-        		list.add(nums[twoNums[0]]);
-        		list.add(nums[twoNums[1]]);
-        		result.add(list);
-        		list = new ArrayList<Integer>();
+        	int k = i+1;
+        	int j = nums.length - 1;
+        	while(k <j) {
+        		if(nums[k] + nums[j] < target) {
+        			k++;
+        		} else if(nums[k] + nums[j] > target) {
+        			j--;
+        		} else {
+            		List<Integer> list = new ArrayList<Integer>();
+
+        			list.add(a);
+            		list.add(nums[k]);
+            		list.add(nums[j]);
+            		result.add(list);
+            		while(k<j && nums[k] == nums[k+1]) {
+            			k++;
+            		}
+            		while(k<j && nums[j] == nums[j-1]) {
+            			j--;
+            		}
+
+    				k++; // move left pointer to right since left no. should increase in sorted array
+    				j--; // move right pointer to left since right no. should decrease to keep currentSum same while finding other valid numbers
+        		}
+        		
         	}
         }
-        return result;
+        	return result;
+        	
+        	
     }
     
     public static int[] twoSum(int[] nums, int target, int i ) {
