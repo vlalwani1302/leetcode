@@ -25,7 +25,7 @@ public class Merge2SortedLists {
 	}
 
 	private static void mergeLists(Node l1, Node l2) {
-		LinkedList result = new LinkedList();
+		LinkedList result = new LinkedList();// using new list to add items from both lists one by one
 		while(l1 != null && l2 != null) {
 			if(l1.data < l2.data) {
 				result.append(l1.data);
