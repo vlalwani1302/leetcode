@@ -86,6 +86,10 @@ public class ThreeSum {
 
 	            System.out.println(result1);
 
+	            List<List<Integer>> result2 = threeSum(new int[] {-2,0,0,2,2});
+
+	            System.out.println(result2);
+
 	}
 
 }

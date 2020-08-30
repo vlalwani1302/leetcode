@@ -1,5 +1,6 @@
 package leetcode.alice.linkedlist;
 
+
 public class LinkedList {
 	Node head;
 
@@ -78,4 +79,13 @@ public class LinkedList {
 
 
     }
+	
+	public void show() {
+		Node temp = head;
+		while(temp.next != null) {
+			System.out.print(temp.data);
+			temp = temp.next;
+		}
+		System.out.println(temp.data);
+	}
 }
