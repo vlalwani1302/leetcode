@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 
 public class ContainerWithMostWater {
 
-		// Brute Force
 	    static int maxArea(int[] height) {
 	    	int maxArea = 0;
 	        int l = 0;

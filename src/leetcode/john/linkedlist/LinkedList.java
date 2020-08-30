@@ -89,6 +89,7 @@ public class LinkedList {
 		return result;
 	}
 	
+	// two pointers
 	public Node removeNthFromEnd2(Node head, int n) {
 		Node fast = head;
 		Node slow = head;
