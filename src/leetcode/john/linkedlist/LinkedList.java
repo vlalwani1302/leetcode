@@ -89,21 +89,21 @@ public class LinkedList {
 		return result;
 	}
 	
-//	public Node removeNthFromEnd2(Node head, int n) {
-//		Node fast = head;
-//		Node slow = head;
-//		Node result = null;
-//		for(int i = 0; i < n; i++) {
-//			fast = fast.next;
-//		}
-//		while(fast.next != null) {
-//			fast = fast.next;
-//			slow = slow.next;
-//		}
-//		result = slow.next;
-//		slow.next = slow.next.next;
-//		return result;
-//	}
+	public Node removeNthFromEnd2(Node head, int n) {
+		Node fast = head;
+		Node slow = head;
+		Node result = null;
+		for(int i = 0; i < n; i++) {
+			fast = fast.next;
+		}
+		while(fast.next != null) {
+			fast = fast.next;
+			slow = slow.next;
+		}
+		result = slow.next;
+		slow.next = slow.next.next;
+		return result;
+	}
 	
 	public static void main(String[] args) {
 		LinkedList list = new LinkedList();
@@ -120,20 +120,20 @@ public class LinkedList {
 		System.out.println("After:");
 		list.show();
 		
-//		// For other solution 
-//		System.out.println("For other solution:\n");
-//		LinkedList list2 = new LinkedList();
-//		list2.append(1);
-//		list2.append(2);
-//		list2.append(3);
-//		list2.append(4);
-//		list2.append(5);
-//		
-//		System.out.println("Before:");
-//		list2.show();
-//		list2.removeNthFromEnd2(list.head, 2);
-//		
-//		System.out.println("After:");
-//		list2.show();
+		// For other solution 
+		System.out.println("For other solution:\n");
+		LinkedList list2 = new LinkedList();
+		list2.append(1);
+		list2.append(2);
+		list2.append(3);
+		list2.append(4);
+		list2.append(5);
+		
+		System.out.println("Before:");
+		list2.show();
+		list2.removeNthFromEnd2(list2.head, 2);
+		
+		System.out.println("After:");
+		list2.show();
 	}
 }
