@@ -2,8 +2,10 @@ package leetcode.alice.array;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class GroupAnagram {
@@ -61,4 +63,17 @@ public class GroupAnagram {
 
 		return result;
 	}
+
+
+	public static List<List<String>> groupAnagramsBetter(String[] strs) {
+		// map to store sorted string and list of anagrams as key value pairs
+		Map<String, List<String>> map = new HashMap<>();
+		for(String word : strs) {
+			char[] charArr = word.toCharArray();
+			Arrays.sort(charArr); // anagrams once sorted will result in same string
+			map.putIfAbsent(String.valueOf(charArr), new ArrayList<>());
+			map.get(String.valueOf(charArr)).add(word);
+		}
+		return new ArrayList<>(map.values());
+    }
 }
