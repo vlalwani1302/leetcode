@@ -8,7 +8,7 @@ public class MergeIntervals {
 	 public static int[][] mergeIntervals(int[][] intervals) {
 		 if(intervals.length <= 1) return intervals;
 		 // Sort the list
-		 Arrays.parallelSort(intervals, (arr1, arr2) -> Integer.compare(arr1[0], arr2[0]));
+		 Arrays.sort(intervals, (arr1, arr2) -> Integer.compare(arr1[0], arr2[0]));
 		 List<int[]> result = new ArrayList<>();
 		 result.add(intervals[0]);//adding first interval to start comparing
 		 int output_index = 0;
