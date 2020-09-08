@@ -1,11 +1,11 @@
 package leetcode.john;
 
 public class TreeNode {
-    private int val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode() {}
-    TreeNode(int val) { this.setVal(val); }
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode() {}
+    public TreeNode(int val) { this.setVal(val); }
     TreeNode(int val, TreeNode left, TreeNode right) {
     	this.setVal(val);
     	this.left = left;
