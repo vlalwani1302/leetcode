@@ -1,12 +1,12 @@
 package leetcode.john.medium;
 
-import java.io.*;
-import java.math.*;
-import java.security.*;
-import java.text.*;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.regex.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ThreeSum {
@@ -89,7 +89,6 @@ public class ThreeSum {
 	            List<List<Integer>> result2 = threeSum(new int[] {-2,0,0,2,2});
 
 	            System.out.println(result2);
-
-	}
+	    }
 
 }
