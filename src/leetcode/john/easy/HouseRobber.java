@@ -1,6 +1,6 @@
 package leetcode.john.easy;
 
-class HouseRobber {
+public class HouseRobber {
 	
 	public static void main(String[] args) {
 		System.out.println(rob(new int[] {1,3,1,3,100}));
