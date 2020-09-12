@@ -25,6 +25,4 @@ public class InvertABinaryTree {
         tree1.insert(5); 
         
     	
-    	System.out.println(maxDepth(tree1.getRoot()));
-    }
 }
