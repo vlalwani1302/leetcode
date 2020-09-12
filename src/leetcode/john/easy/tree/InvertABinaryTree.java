@@ -4,6 +4,17 @@ import leetcode.john.BinaryTree;
 import leetcode.john.TreeNode;
 
 public class InvertABinaryTree {
+	
+	public static TreeNode invertTreeTemp(TreeNode root) {
+		if(root == null) {
+			return root;
+		}
+		TreeNode temp = root.left;
+		root.left = invertTree(root.right);
+		root.right = invertTree(temp);
+		return root;
+    }
+
 	public static TreeNode invertTree(TreeNode root) {
 		if(root == null) {
 			return root;
@@ -24,5 +35,5 @@ public class InvertABinaryTree {
         tree1.insert(4); 
         tree1.insert(5); 
         
-    	
+    }
 }
