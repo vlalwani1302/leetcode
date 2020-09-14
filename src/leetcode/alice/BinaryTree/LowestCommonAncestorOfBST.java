@@ -40,4 +40,32 @@ class LowestCommonAncestorOfBST {
         }
         return result;
     }
+    
+    public TreeNode lowestCommonAncestorImproved(TreeNode root, TreeNode p, TreeNode q) {
+        
+        if((p.val <= root.val && q.val >= root.val) || (p.val >= root.val && q.val <= root.val)){
+            return root;
+        }else if(p.val > root.val && q.val > root.val){
+            return lowestCommonAncestor(root.right, p, q);
+        }else{
+            return lowestCommonAncestor(root.left, p, q);
+        
+        }
+    }
+    
+    //time complexity - O(N), space complexity - O(1)
+    public TreeNode lowestCommonAncestorNORecursion(TreeNode root, TreeNode p, TreeNode q) {
+        
+        while(root != null){
+            
+           if((p.val <= root.val && q.val >= root.val) || (p.val >= root.val && q.val <= root.val)){
+                return root;
+            }else if(p.val > root.val && q.val > root.val){
+               root = root.right;
+           }else{
+               root = root.left;
+           }
+        }
+        return null;
+    }
 }
