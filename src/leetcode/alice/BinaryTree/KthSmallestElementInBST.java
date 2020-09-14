@@ -21,12 +21,12 @@ import java.util.List;
 class KthSmallestElementInBST {
     public int kthSmallest(TreeNode root, int k) {
         List<Integer> arr = new ArrayList<Integer>();
-            arr = preorder(root, arr);
+            arr = inorder(root, arr);
         
         return arr.get(k-1);
     }
     
-    List<Integer> preorder(TreeNode root, List<Integer> arr ){
+    List<Integer> inorder(TreeNode root, List<Integer> arr ){
         if(root == null){
             return arr;
         }
