@@ -30,9 +30,9 @@ class KthSmallestElementInBST {
         if(root == null){
             return arr;
         }
-        preorder(root.left, arr);
+        inorder(root.left, arr);
         arr.add(root.val);
-        preorder(root.right, arr);
+        inorder(root.right, arr);
         
         return arr;
     }
