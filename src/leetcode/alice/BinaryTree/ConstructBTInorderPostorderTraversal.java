@@ -1,7 +1,5 @@
 package leetcode.alice.BinaryTree;
 
-import leetcode.john.TreeNode;
-
 public class ConstructBTInorderPostorderTraversal {
 
 	public TreeNode buildTree(int[] inorder, int[] postorder) {
