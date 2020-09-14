@@ -24,46 +24,37 @@ import leetcode.john.TreeNode;
 public class KthSmallestElement {
 	public static int kthSmallest(TreeNode root, int k) {
 		List<Integer> list = new ArrayList<>();
-		inorderTraversal(root, list, k, 0);
+		inorderTraversal(root, list, k);
 		
 		return list.get(k-1);
     }
     
     
-    public static void inorderTraversal(TreeNode root, List<Integer> list, int k, int counter) {
+    public static void inorderTraversal(TreeNode root, List<Integer> list, int k) {
 		if(root == null) {
 			return;
 		}
-		inorderTraversal(root.left, list, counter+1);
-		if(counter == k) {
+		inorderTraversal(root.left, list, k);
+		if(list.size()+1 == k) {
 			list.add(root.val);
 			return;
 		}else {
 			list.add(root.val);
 		}
-		inorderTraversal(root.right, list, counter+1);
+		inorderTraversal(root.right, list, k);
 	}
-
-
-	private static void inorderTraversal(TreeNode root, List<Integer> list, int k) {
-		// TODO Auto-generated method stub
-		
-	}
-
 
 	public static void main(String[] args) {
     	BinaryTree tree1 = new BinaryTree();
     	tree1.insert(5); 
     	tree1.insert(3); 
         tree1.insert(6);
+        tree1.insert(1);
         tree1.insert(2);
         tree1.insert(4);
-        tree1.insert((Integer) null);
-        tree1.insert((Integer) null);
-        tree1.insert(1);
         
     	
-    	System.out.println(kthSmallest(tree1.getRoot()));
+    	System.out.println(kthSmallest(tree1.getRoot(), 2));
     }
 
 }
