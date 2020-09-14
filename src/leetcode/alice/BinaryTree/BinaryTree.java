@@ -5,7 +5,7 @@ import java.util.List;
 
 public class BinaryTree {
 
-	private TreeNode root;
+	public TreeNode root;
 
 	public void insert(int value) {
 		root = insert(value, root);
