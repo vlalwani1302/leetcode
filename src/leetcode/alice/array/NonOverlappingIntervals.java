@@ -22,7 +22,7 @@ class NonOverlappingIntervals {
 		Arrays.sort(intervals, new Comparator<int[]>() {
 			@Override
 			public int compare(int[] i1, int[] i2) {
-				return i1[0] - i2[0];
+				return i1[1] - i2[1];
 			}
 		});
 		int count = 0;
