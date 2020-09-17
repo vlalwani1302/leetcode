@@ -2,9 +2,9 @@ package leetcode.alice.string;
 class LongestRepeatingCharacterReplacement {
 	
 	public static void main(String[] args) {
-		System.out.println(characterReplacement1("AABABBA" ,1));
-		System.out.println(characterReplacement1("ABBB" ,1));
-		System.out.println(characterReplacement1("BAAAB" ,2));
+		System.out.println(characterReplacement("AABABBA" ,1));
+		System.out.println(characterReplacement("ABBB" ,1));
+		System.out.println(characterReplacement("BAAAB" ,2));
 	}
     public static int characterReplacement(String s, int k) {
         int max = 0;
@@ -23,7 +23,11 @@ class LongestRepeatingCharacterReplacement {
                 
             }
             
-            max = Math.max(max, j-i);
+            if(counter > 0 && i > 0) {
+            	max = Math.max(max, j - i + Math.min(counter, i));
+        	}else {
+                max = Math.max(max, j-i);
+        	}
            
         }
         
