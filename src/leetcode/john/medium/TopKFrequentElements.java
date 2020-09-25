@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 
 public class TopKFrequentElements {
@@ -43,6 +44,27 @@ public class TopKFrequentElements {
 				result[n++] = entry.getKey();
 			}
 		}
+		return result;
+    }
+	
+	public static int[] topKFrequentHeap(int[] nums, int k) {
+		if(nums == null || nums.length == 0) return new int[]{};
+		int[] result = new int[k];
+		Map<Integer, Integer> map = new HashMap<>();
+		for(int i: nums) { // generate frequency map
+			map.putIfAbsent(i, 0);
+			map.put(i, map.get(i)+1);
+		}
+		PriorityQueue<Map.Entry<Integer, Integer>> minHeap = new PriorityQueue<>((a,b) -> (a.getValue() - b.getValue()));
+		for (Map.Entry<Integer,Integer> entry : map.entrySet()) {
+			minHeap.add(entry);
+			if(minHeap.size() > k) {
+				minHeap.remove();
+			}
+        }
+		for(int i = k - 1; i >= 0; --i) {
+			result[i] = minHeap.poll().getKey();
+        }
 		return result;
     }
 	

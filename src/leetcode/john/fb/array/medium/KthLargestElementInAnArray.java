@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 
 public class KthLargestElementInAnArray {
@@ -25,6 +26,18 @@ public class KthLargestElementInAnArray {
 			}
 		}
 		return 0;
+	}
+	
+	public static int findKthLargestHeap(int[] nums, int k) {
+		if(nums == null || nums.length == 0) return 0;
+		PriorityQueue<Integer> minHeap = new PriorityQueue<>((a, b) -> a - b);
+		for(int i:nums){
+			minHeap.add(i);
+			if(minHeap.size() > k) {
+				minHeap.remove();
+			}
+		}
+		return minHeap.peek(); // return top element;
 	}
 	
 }
