@@ -7,11 +7,41 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.PriorityQueue;
 
 class MeetingRooms2 {
 	public static void main(String[] args) {
 		System.out.println(minMeetingRooms(new int[][] { { 1, 8 }, { 6, 20 }, { 9, 16 }, { 13, 17 } }));
 		System.out.println(minMeetingRooms(new int[][] { { 9, 14 }, { 5, 6 }, { 3, 5 }, { 12, 19 } }));
+	}
+	
+	public static int minMeetingRoomsPQ(int[][] intervals) {
+		if(intervals.length < 1)
+			return 0;
+		
+		PriorityQueue<int[]> pq = new PriorityQueue<int[]>((a1, a2) -> a1[1]-a2[1]);
+
+		/*
+		PriorityQueue<int[]> pq = new PriorityQueue<int[]>(new Comparator<int[]>() {
+			@Override
+			public int compare(int[] a1, int[] a2) {
+				return a1[1] - a2[1];
+			}
+		}); 
+		*/
+		Arrays.sort(intervals, (a1, a2) ->  a1[0]-a2[0]);
+		pq.add(intervals[0]);
+		for(int i=1; i<intervals.length; i++) {
+			int[] current = intervals[i];
+			int[] previousEndTime = pq.remove();
+			if(current[0] >= previousEndTime[1]) {
+				previousEndTime[1] = current[1];
+			}else {
+				pq.add(current);
+			}
+			pq.add(previousEndTime);
+		}
+		return pq.size();
 	}
 
 	public static int minMeetingRooms(int[][] intervals) {

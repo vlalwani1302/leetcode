@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.stream.Collectors;
 
 class TpKFrequentElements {
@@ -41,5 +43,30 @@ class TpKFrequentElements {
             
         }
         return result;  
+    }
+    
+    
+    //O(nlognK)
+    public int[] topKFrequentUsingPQ(int[] nums, int k) {
+        
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for(int i=0; i< nums.length; i++){
+            map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
+
+        }
+        
+        Queue<Integer> heap = new PriorityQueue<>((n1,n2) -> map.get(n1) - map.get(n2));
+        
+        for(int n : map.keySet()){
+            heap.add(n);
+            if(heap.size() > k)
+                heap.poll();
+        }
+        
+        int[] top = new int[k];
+        for(int i= k-1; i>=0 ;i--){
+            top[i] = heap.poll();
+        }
+        return top;
     }
 }
