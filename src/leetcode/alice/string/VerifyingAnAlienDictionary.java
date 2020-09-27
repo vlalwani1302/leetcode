@@ -18,14 +18,9 @@ class VerifyingAnAlienDictionary {
 			alienSeq[c] = i;
 		}
 
-		for (int j = 0; j < words.length; j++) {
+		for (int j = 0; j < words.length-1; j++) {
 			String word = words[j];
-			String nextWord = null;
-			if (j + 1 < words.length) {
-				nextWord = words[j + 1];
-			} else {
-				return true;
-			}
+			String nextWord = words[j + 1];
 
 			for (int k = 0; k < word.length() ; k++) {
 				if(k >= nextWord.length()) {
