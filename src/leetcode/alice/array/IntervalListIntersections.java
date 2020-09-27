@@ -33,10 +33,6 @@ class IntervalListIntersections {
             }
         }
         
-        int[][] result = new int[list.size()][2];
-        for(int i=0; i< list.size(); i++){
-            result[i] = list.get(i);
-        }
-        return result;
+        return list.toArray(new int[list.size()][]);
     }
 }
