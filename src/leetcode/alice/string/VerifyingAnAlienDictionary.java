@@ -1,5 +1,8 @@
 package leetcode.alice.string;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class VerifyingAnAlienDictionary {
 	public static void main(String[] args) {
 		System.out.println(isAlienSorted(new
@@ -17,7 +20,7 @@ class VerifyingAnAlienDictionary {
 			int c = order.charAt(i) - 'a';
 			alienSeq[c] = i;
 		}
-
+		List<int[]> l = new ArrayList<int[]>();
 		for (int j = 0; j < words.length-1; j++) {
 			String word = words[j];
 			String nextWord = words[j + 1];

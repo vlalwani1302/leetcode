@@ -128,6 +128,45 @@ public class ThreeSum {
     	}
         return result;
     }
+    
+    public List<List<Integer>> threeSumUsingTwoPointer(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+       // List<Integer> list = new ArrayList<Integer>();        
+        
+        for(int i=0; i<nums.length; i++){
+            if(i > 0 && nums[i] == nums[i-1]){
+                continue;
+            }
+            int x = 0 - nums[i];
+            
+            int low = i+1;
+            int high = nums.length -1;
+            
+            while(low < high){
+                if(nums[low] + nums[high] == x ){
+                    List<Integer> l = new ArrayList<>();
+                    l.add(nums[i]);l.add(nums[low]);l.add(nums[high]);
+                    result.add(l);
+    
+                    while(low < high && nums[low] == nums[low+1]){
+                        low++;
+                    }
+                    while(low < high && nums[high] == nums[high-1]){
+                        high--;
+                    }
+                    low++;high--;
+                }else{
+                   if(nums[low] + nums[high] > x)
+                       high--;
+                   else
+                       low++;
+                }
+            }
+        }
+        
+        return result;
+    }
 
     public static void main(String[] args) {
     	List<List<Integer>> result = threeSum1(new int[] {0,0,0,0});

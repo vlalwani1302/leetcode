@@ -28,7 +28,8 @@ class BinaryTreeRightSide {
 		bt.insert(4);
 		bt.insert(7);
 		bt.insert(8);
-		
+		bt.insert(10);
+
 		System.out.println(rightSideView(bt.root));
 	}
     
