@@ -1,4 +1,8 @@
 package leetcode.alice.string;
+
+import java.util.HashMap;
+import java.util.Map;
+
 class RomanToInteger {
     public int romanToInt(String s) {
         Map<Character, Integer> map = new HashMap<>();
