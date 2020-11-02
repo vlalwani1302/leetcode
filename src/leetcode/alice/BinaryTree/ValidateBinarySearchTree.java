@@ -1,5 +1,7 @@
 package leetcode.alice.BinaryTree;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 class ValidateBinarySearchTree {
@@ -42,4 +44,26 @@ class ValidateBinarySearchTree {
             return false;
         return true;
     }*/
+    
+    public boolean isValidBSTUsingInorder(TreeNode root) {
+        
+        List<Integer> list = inorder(root, new ArrayList<Integer>());
+        for(int i=0; i<list.size() -1; i++){
+            if(list.get(i) >= list.get(i+1)){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public List<Integer> inorder(TreeNode node, List<Integer> list) {
+        if(node == null) return list;
+        
+        inorder(node.left, list);
+        
+        list.add(node.val);
+        inorder(node.right, list);
+        
+        return list;
+    }
 }

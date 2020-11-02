@@ -15,10 +15,10 @@ package leetcode.alice.array;
  */
 public class FindFirstLastPosOfElementInSortedArray {
 
+	static int[] result = new int[2];
 	private static int[] searchRange(int[] nums, int target) {
-		int[] result = new int[2];
-		result[0] = binarySearchLeft(nums, target, 0, nums.length-1);
-		result[1] = binarySearchRight(nums, target, 0, nums.length-1);
+		result[0] = binarySearchLeft(nums, target, 0, nums.length - 1);
+		result[1] = binarySearchRight(nums, target, 0, nums.length - 1);
 		return result;
 	}
 
@@ -57,7 +57,7 @@ public class FindFirstLastPosOfElementInSortedArray {
 			if (arr[mid] == value) {
 				index = mid;
 				low = mid + 1;
-			}else if (value > arr[mid]) {
+			} else if (value > arr[mid]) {
 				// search in right array
 				low = mid + 1;
 			} else {
@@ -74,5 +74,7 @@ public class FindFirstLastPosOfElementInSortedArray {
 		System.out.println(searchRange(arr, 8));
 		arr = new int[] { 5, 7, 7, 8, 8, 10 };
 		System.out.println(searchRange(arr, 6));
+		
 	}
+
 }
