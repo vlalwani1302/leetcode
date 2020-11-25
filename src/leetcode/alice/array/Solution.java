@@ -31,7 +31,7 @@ public class Solution {
 			Holding holding = new Holding();
 			holding.setAssetId(holdingArr[0]);
 			holding.setAssetName(holdingArr[1]);
-			holding.setQuantity(Integer.valueOf(holdingArr[2]));
+			holding.setQuantity(BigDecimal.valueOf(holdingArr[2]));
 			holdings.add(holding);
 		}
 
@@ -51,17 +51,17 @@ public class Solution {
 		String[] portfolioBenchmark = input.split(COLON);
 
 		List<Holding> holdings = populateHolding(portfolioBenchmark[0]);
-		Map<String, Integer> benchmarkMap = populateBenchmark(portfolioBenchmark[1]);
+		Map<String, BigDecimal> benchmarkMap = populateBenchmark(portfolioBenchmark[1]);
 		List<Transaction> transactions = new ArrayList<Transaction>();
 		for(Holding holding : holdings) {
 			if(benchmarkMap.containsKey(holding.getAssetId()) 
 					&& !holding.getQuantity().equals(benchmarkMap.get(holding.getAssetId()))){
 				Transaction transaction = new Transaction();
-				Integer benchmark = benchmarkMap.get(holding.getAssetId());
-				String transactionType = holding.getQuantity() > benchmark ? "SELL" : "BUY";
+				BigDecimal benchmark = benchmarkMap.get(holding.getAssetId());
+				String transactionType = holding.getQuantity().compareTo(benchmark) > 0 ? "SELL" : "BUY";
 				transaction.setAssetId(holding.getAssetId());
 				transaction.setTransactionType(transactionType);
-				transaction.setQuantity(Math.abs(holding.getQuantity() - benchmark));
+				transaction.setQuantity(holding.getQuantity().subtract(benchmark).abs().setScale(2));
 				
 				transactions.add(transaction);
 			}
@@ -81,13 +81,13 @@ public class Solution {
 
 	}
 
-	private static Map<String, Integer> populateBenchmark(String input) {
-		Map<String, Integer> map = new HashMap<String, Integer>();
+	private static Map<String, BigDecimal> populateBenchmark(String input) {
+		Map<String, BigDecimal> map = new HashMap<String, BigDecimal>();
 		String[] portfolioHoldings = input.split(PIPE);
 
 		for (String str : portfolioHoldings) {
 			String[] holdingArr = str.split(COMMA);
-			map.put(holdingArr[0], Integer.valueOf(holdingArr[2]));
+			map.put(holdingArr[0], new BigDecimal(holdingArr[2]));
 		}
 		return map;
 	}
@@ -102,7 +102,7 @@ public class Solution {
 			Holding holding = new Holding();
 			holding.setAssetId(holdingArr[0]);
 			holding.setAssetName(holdingArr[1]);
-			holding.setQuantity(Integer.valueOf(holdingArr[2]));
+			holding.setQuantity(new BigDecimal(holdingArr[2]));
 			holdings.add(holding);
 		}
 		return holdings;
@@ -113,7 +113,7 @@ public class Solution {
 class Holding {
 	String assetId;
 	String assetName;
-	Integer quantity;
+	BigDecimal quantity;
 
 	public String getAssetId() {
 		return assetId;
@@ -131,11 +131,11 @@ class Holding {
 		this.assetName = assetName;
 	}
 
-	public Integer getQuantity() {
+	public BigDecimal getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(Integer quantity) {
+	public void setQuantity(BigDecimal quantity) {
 		this.quantity = quantity;
 	}
 
@@ -149,7 +149,7 @@ class Holding {
 class Transaction {
 	String assetId;
 	String transactionType;
-	Integer quantity;
+	BigDecimal quantity;
 
 	public String getAssetId() {
 		return assetId;
@@ -167,11 +167,11 @@ class Transaction {
 		this.transactionType = transactionType;
 	}
 
-	public Integer getQuantity() {
+	public BigDecimal getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(Integer quantity) {
+	public void setQuantity(BigDecimal quantity) {
 		this.quantity = quantity;
 	}
 
