@@ -1,4 +1,4 @@
-package leetcode.alice;
+package leetcode.alice.array;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
