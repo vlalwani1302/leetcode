@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringJoiner;
 
 public class Solution {
 	public static final String PIPE = "\\|";
@@ -36,15 +37,9 @@ public class Solution {
 		}
 
 		Collections.sort(holdings, (h1, h2) -> h1.getAssetId().compareTo(h2.getAssetId()));
-		StringBuilder sb = new StringBuilder();
-
-		String separator = "";
-		for (Holding h : holdings) {
-			sb.append(separator);
-			sb.append(h.toString());
-			separator = COMMA + " ";
-		}
-		return sb.toString();
+		StringJoiner joiner = new StringJoiner(COMMA);
+		holdings.stream().map(e -> joiner.add(e.toString()));
+		return joiner.toString();
 	}
 
 	static String generateTransactions(String input) {
@@ -68,17 +63,9 @@ public class Solution {
 		}
 		
 		Collections.sort(transactions, (t1, t2) -> t1.getAssetId().compareTo(t2.getAssetId()));
-
-		StringBuilder sb = new StringBuilder();
-
-		String separator = "";
-		for (Transaction t : transactions) {
-			sb.append(separator);
-			sb.append(t.toString());
-			separator = COMMA + " ";
-		}
-		return sb.toString();
-
+		StringJoiner joiner = new StringJoiner(COMMA);
+		transactions.stream().map(e -> joiner.add(e.toString()));
+		return joiner.toString();
 	}
 
 	private static Map<String, Integer> populateBenchmark(String input) {
